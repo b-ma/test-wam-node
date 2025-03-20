@@ -1,0 +1,17 @@
+{
+  "name": "test-wam-node",
+  "version": "1.0.0",
+  "description": "",
+  "license": "ISC",
+  "author": "",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "postinstall": "cp -R node_modules/wam-community/dist/plugins/wimmics/utils/sdk node_modules/wam-community/dist/plugins/wimmics/utils/sdk-parammgr/src/"
+  },
+  "dependencies": {
+    "@webaudiomodules/sdk": "^0.0.12",
+    "node-web-audio-api": "^1.0.3",
+    "wam-community": "^0.4.9"
+  }
+}
