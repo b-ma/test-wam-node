@@ -1,4 +1,5 @@
 import fs from 'node:fs';
+import { URL } from 'url'
 import { AudioContext, GainNode, AudioParam, AudioWorkletNode } from 'node-web-audio-api';
 import initializeWamHost from '@webaudiomodules/sdk/src/initializeWamHost.js';
 
@@ -6,7 +7,7 @@ import initializeWamHost from '@webaudiomodules/sdk/src/initializeWamHost.js';
 globalThis.GainNode = GainNode;
 globalThis.AudioParam = AudioParam;
 globalThis.AudioWorkletNode = AudioWorkletNode;
-globalThis.window = {};
+globalThis.window = { URL };
 globalThis.HTMLElement = class {};
 globalThis.customElements = { define: function() {} };
 globalThis.fetch = (pathname) => {
@@ -31,6 +32,7 @@ globalThis.fetch = (pathname) => {
   });
 }
 
+// we need dynamic imports to have the mocks registered first
 const { default: WAM } = await import('wam-community/dist/plugins/wimmics/stonephaser/index.js');
 
 const audioContext = new AudioContext();

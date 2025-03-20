@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@webaudiomodules/sdk": "^0.0.12",
-    "node-web-audio-api": "^1.0.3",
+    "node-web-audio-api": "^1.0.4",
     "wam-community": "^0.4.9"
   }
 }
