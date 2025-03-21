@@ -1,6 +1,6 @@
 import fs from 'node:fs';
 import { URL } from 'url'
-import { AudioContext, GainNode, AudioParam, AudioWorkletNode } from 'node-web-audio-api';
+import { AudioContext, GainNode, AudioParam, AudioWorkletNode, mediaDevices, MediaStreamAudioSourceNode } from 'node-web-audio-api';
 import initializeWamHost from '@webaudiomodules/sdk/src/initializeWamHost.js';
 
 // mock everything we can / need...
@@ -42,4 +42,9 @@ console.log(hostGroupId);
 const instance = await WAM.createInstance(hostGroupId, audioContext);
 console.log(instance);
 
+const mediaStream = await mediaDevices.getUserMedia({ audio: true });
+const input = new MediaStreamAudioSourceNode(audioContext, { mediaStream });
+
+input.connect(instance.audioNode);
+instance.audioNode.connect(audioContext.destination);
 
